@@ -1,0 +1,7 @@
+node_modules/
+.test-vault/
+dist/
+artifacts/
+.DS_Store
+*.tsbuildinfo
+npm-debug.log*
