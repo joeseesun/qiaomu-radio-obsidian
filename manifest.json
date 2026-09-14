@@ -1,0 +1,10 @@
+{
+  "id": "qiaomu-radio",
+  "name": "Qiaomu Radio",
+  "version": "1.1.0",
+  "minAppVersion": "1.8.9",
+  "description": "Discover and play live radio stations from around the world while you read, write, and think, with a distraction-free player and local taste memory.",
+  "author": "向阳乔木",
+  "authorUrl": "https://github.com/joeseesun",
+  "isDesktopOnly": false
+}

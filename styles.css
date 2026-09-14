@@ -1,0 +1,1085 @@
+.workspace-leaf-content[data-type="qiaomu-radio-view"] > .view-header {
+  display: none;
+}
+
+.workspace-leaf-content[data-type="qiaomu-radio-view"] > .view-content {
+  padding: 0;
+  overflow: hidden;
+}
+
+.qiaomu-radio {
+  position: relative;
+  --qr-accent: #d86d43;
+  --qr-accent-soft: color-mix(in srgb, var(--qr-accent) 13%, transparent);
+  --qr-panel: color-mix(in srgb, var(--background-primary) 95%, var(--text-normal));
+  --qr-panel-raised: color-mix(in srgb, var(--background-primary) 98%, var(--text-normal));
+  --qr-line: color-mix(in srgb, var(--text-normal) 12%, transparent);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  container-type: inline-size;
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.qiaomu-radio *,
+.qiaomu-radio *::before,
+.qiaomu-radio *::after {
+  box-sizing: border-box;
+}
+
+.qiaomu-radio button,
+.qiaomu-radio input {
+  font: inherit;
+}
+
+/* Match the host's button selector specificity, including its hover state. */
+.qiaomu-radio:where([data-theme="classic"]) button:not(.clickable-icon) {
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  height: auto;
+}
+
+.qiaomu-radio:where([data-theme="classic"]) button:not(.clickable-icon):hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.qiaomu-radio__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.qiaomu-radio button:focus-visible,
+.qiaomu-radio input:focus-visible,
+.qiaomu-radio-settings__links a:focus-visible {
+  outline: 2px solid var(--qr-accent);
+  outline-offset: 2px;
+}
+
+.qiaomu-radio__shell {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  background: var(--background-primary);
+}
+
+.qiaomu-radio__device {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--background-primary);
+}
+
+.qiaomu-radio__modes,
+.qiaomu-radio__status,
+.qiaomu-radio__volume,
+.qiaomu-radio__channels {
+  display: flex;
+  align-items: center;
+}
+
+.qiaomu-radio__modes {
+  display: flex;
+  width: max-content;
+  padding: 3px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--text-normal) 5%, transparent);
+  align-items: center;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+
+.qiaomu-radio__modes button {
+  min-height: 24px;
+  padding: 2px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-faint);
+  font-size: 11px;
+}
+
+.qiaomu-radio .qiaomu-radio__modes button[aria-pressed="true"] {
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-weight: 650;
+  box-shadow: none;
+}
+
+.qiaomu-radio__player-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.qiaomu-radio__body {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  gap: 0;
+  grid-template-columns: minmax(280px, 34%) minmax(0, 1fr);
+  background: var(--background-primary);
+}
+
+.qiaomu-radio__player {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 36px clamp(24px, 3cqw, 48px);
+  justify-content: space-between;
+  background: color-mix(in srgb, var(--background-primary) 97%, var(--qr-accent));
+}
+
+.qiaomu-radio__status {
+  gap: 8px;
+  min-height: 32px;
+  flex: 0 0 auto;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 560;
+}
+
+.qiaomu-radio__status-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qiaomu-radio__status-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+.qiaomu-radio__status-dot.is-playing,
+.qiaomu-radio__status-dot.is-loading {
+  background: var(--qr-accent);
+  box-shadow: 0 0 0 5px var(--qr-accent-soft);
+}
+
+.qiaomu-radio__now {
+  display: flex;
+  min-height: 0;
+  flex: 0 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+}
+
+.qiaomu-radio__listening {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  gap: 32px;
+  padding: 32px 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.qiaomu-radio__artwork {
+  position: relative;
+  display: grid;
+  width: min(180px, 62%);
+  aspect-ratio: 1;
+  margin: 0 auto 24px;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--qr-accent) 7%, var(--background-primary));
+  color: var(--qr-accent);
+  box-shadow: 0 0 0 12px color-mix(in srgb, var(--qr-accent) 3%, transparent);
+}
+
+.qiaomu-radio__artwork-emblem svg { width: 48px; height: 48px; stroke-width: 1; }
+.qiaomu-radio__artwork img { position: absolute; width: 66%; height: 66%; object-fit: contain; }
+.qiaomu-radio__artwork-emblem[hidden] { display: none; }
+
+.qiaomu-radio__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.qiaomu-radio__title-row h1 {
+  min-width: 0;
+  flex: 1;
+}
+
+.qiaomu-radio__eyebrow {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.qiaomu-radio__now h1,
+.qiaomu-radio__now p,
+.qiaomu-radio__results-heading h2,
+.qiaomu-radio__notice,
+.qiaomu-radio__empty {
+  margin: 0;
+}
+
+.qiaomu-radio__now h1 {
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: clamp(24px, 2.8cqw, 38px);
+  font-weight: 600;
+  letter-spacing: -.028em;
+  line-height: 1.14;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.qiaomu-radio__now p {
+  max-width: 40ch;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qiaomu-radio__status-like,
+.qiaomu-radio__station-like {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-faint);
+}
+
+.qiaomu-radio__status-like {
+  flex: 0 0 40px;
+  min-height: 40px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .qiaomu-radio__status-like:hover,
+  .qiaomu-radio__station-like:hover {
+    background: color-mix(in srgb, var(--text-normal) 7%, transparent);
+    color: var(--text-normal);
+  }
+}
+
+.qiaomu-radio .is-liked { color: var(--qr-accent); }
+.qiaomu-radio .is-liked svg { fill: currentColor; }
+
+.qiaomu-radio__transport {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 64px 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 0;
+  padding: 24px 0 8px;
+}
+
+.qiaomu-radio__transport > button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid var(--qr-line);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+}
+
+.qiaomu-radio__transport > button:disabled { opacity: .35; }
+
+.qiaomu-radio .qiaomu-radio__transport > .qiaomu-radio__play {
+  width: 64px;
+  height: 64px;
+  border: 0;
+  background: var(--qr-accent);
+  color: white;
+}
+
+.qiaomu-radio .qiaomu-radio__transport > .qiaomu-radio__play:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--qr-accent) 88%, #34261f);
+  color: white;
+  box-shadow: none;
+  transform: none;
+}
+
+.qiaomu-radio .qiaomu-radio__transport > .qiaomu-radio__play:active:not(:disabled) {
+  transform: scale(.96);
+}
+
+.qiaomu-radio__volume {
+  display: grid;
+  width: 100%;
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  min-width: 0;
+  grid-template-columns: 16px minmax(60px, 1fr) 34px;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.qiaomu-radio__volume input { width: 100%; accent-color: var(--qr-accent); }
+.qiaomu-radio__volume svg { width: 15px; height: 15px; }
+
+.qiaomu-radio__directory {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  padding: 28px clamp(20px, 3cqw, 44px) 20px;
+  background: var(--background-primary);
+}
+
+.qiaomu-radio__search {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--qr-line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.qiaomu-radio__search:focus-within { border-bottom-color: var(--qr-accent); }
+
+.qiaomu-radio .qiaomu-radio__search input[type="search"]:focus,
+.qiaomu-radio .qiaomu-radio__search input[type="search"]:focus-visible {
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.qiaomu-radio__search > span { color: var(--text-muted); }
+.qiaomu-radio__search svg { width: 16px; height: 16px; }
+
+.qiaomu-radio__search input {
+  width: 100%;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.qiaomu-radio__search button {
+  min-height: 28px;
+  padding: 3px 4px 3px 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.qiaomu-radio__search button:hover { color: var(--qr-accent); }
+
+.qiaomu-radio__search button[hidden] { display: none; }
+
+.qiaomu-radio__empty button {
+  min-height: 32px;
+  padding: 4px 11px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--qr-accent);
+  box-shadow: none;
+  color: white;
+  font-size: 12px;
+}
+
+.qiaomu-radio__channels {
+  gap: 5px;
+  margin: 16px 0 24px;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  scrollbar-width: none;
+}
+
+.qiaomu-radio__channel-group {
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.qiaomu-radio__library { margin-inline-start: auto; flex-shrink: 0; }
+
+.qiaomu-radio__channels::-webkit-scrollbar { display: none; }
+
+.qiaomu-radio__channels button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  flex: 0 0 auto;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.qiaomu-radio .qiaomu-radio__channels button[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--qr-accent-soft);
+  color: var(--qr-accent);
+  font-weight: 650;
+}
+
+.qiaomu-radio__channels svg { width: 13px; height: 13px; }
+
+.qiaomu-radio__results {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.qiaomu-radio__results-heading {
+  display: flex;
+  min-height: 38px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 2px;
+}
+
+.qiaomu-radio__results-heading h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+
+.qiaomu-radio__results-heading span,
+.qiaomu-radio__notice { color: var(--text-faint); font-size: 11px; }
+.qiaomu-radio__notice { margin: 0; padding: 0 2px 6px; }
+
+.qiaomu-radio__station-list {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.qiaomu-radio__station {
+  display: grid;
+  min-width: 0;
+  min-height: 64px;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: 8px;
+  margin: 3px 0;
+  padding: 4px 8px;
+  background: transparent;
+  border-radius: 8px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .qiaomu-radio__station:hover { background: color-mix(in srgb, var(--text-normal) 5%, transparent); }
+  .qiaomu-radio__station.is-current:hover { background: color-mix(in srgb, var(--text-normal) 5%, transparent); }
+}
+
+.qiaomu-radio__station.is-current {
+  background-color: transparent;
+}
+
+.qiaomu-radio__station.is-current .qiaomu-radio__station-copy strong { color: var(--qr-accent); }
+
+.qiaomu-radio__station.is-current .qiaomu-radio__station-index { color: var(--qr-accent); }
+
+.qiaomu-radio__station-index {
+  display: grid;
+  width: 32px;
+  place-items: center;
+  color: var(--text-faint);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.qiaomu-radio__station-index svg {
+  width: 15px;
+  height: 15px;
+  color: var(--qr-accent);
+}
+
+.qiaomu-radio__station-main {
+  display: flex;
+  min-width: 0;
+  min-height: 56px;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-normal);
+  text-align: start;
+}
+
+.qiaomu-radio__station-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qiaomu-radio__station-copy strong,
+.qiaomu-radio__station-meta > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qiaomu-radio__station-copy strong {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -.006em;
+}
+
+.qiaomu-radio__station.is-current .qiaomu-radio__station-copy strong { font-weight: 660; }
+
+.qiaomu-radio__station-meta {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.qiaomu-radio__station-where {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.qiaomu-radio__station-quality {
+  flex: 0 0 auto;
+  color: var(--text-faint);
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+
+.qiaomu-radio__station-quality::before {
+  content: "·";
+  margin-right: 6px;
+}
+
+.qiaomu-radio__station-like svg { width: 14px; height: 14px; }
+
+.qiaomu-radio__empty {
+  display: grid;
+  min-height: 120px;
+  place-items: center;
+  padding: 20px;
+  border: 1px dashed var(--qr-line);
+  border-radius: 14px;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* iPod mode: fixed-proportion hardware with a monochrome library screen. */
+.qiaomu-radio[data-theme="pocket"] {
+  --qr-accent: #50644d;
+  --qr-panel: #f1f0ea;
+  --qr-panel-raised: #fbfaf6;
+  --qr-line: rgb(30 40 30 / 18%);
+  --qr-screen: #a9b68e;
+  --qr-screen-deep: #8f9d77;
+  --qr-ink: #1d281c;
+}
+
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__shell {
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: clamp(10px, 2vw, 24px);
+  background: radial-gradient(circle at 50% 0, #fff, #d9d8d2 72%);
+}
+
+.qiaomu-radio__ipod {
+  display: flex;
+  width: min(500px, 100%);
+  height: min(760px, 100%);
+  min-height: 620px;
+  flex-direction: column;
+  padding: 34px 38px 24px;
+  overflow: hidden;
+  border: 1px solid #c8c7c1;
+  border-radius: 72px;
+  background: linear-gradient(145deg, #fff 0%, #f7f7f4 58%, #e5e4de 100%);
+  color: var(--qr-ink);
+  box-shadow: 0 34px 80px rgb(25 30 24 / 26%), inset 0 0 24px rgb(255 255 255 / 76%);
+}
+
+.qiaomu-radio__ipod-top {
+  display: flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  flex: 0 0 auto;
+  color: #969b8b;
+  font-size: 17px;
+  font-weight: 720;
+  letter-spacing: -.02em;
+}
+
+.qiaomu-radio__ipod-top button {
+  min-height: 28px;
+  padding: 3px 9px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: #8a8f80;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.qiaomu-radio__ipod-screen {
+  display: flex;
+  height: 324px;
+  min-height: 324px;
+  flex-direction: column;
+  margin-top: 22px;
+  overflow: hidden;
+  border: 9px solid #9da492;
+  border-radius: 20px;
+  background: #cbd7ad;
+  box-shadow: inset 0 0 18px rgb(43 55 36 / 18%);
+}
+
+.qiaomu-radio__ipod-screen-bar {
+  display: grid;
+  min-height: 46px;
+  grid-template-columns: 34px minmax(0, 1fr) 34px;
+  align-items: center;
+  border-bottom: 1px solid rgb(55 68 45 / 34%);
+}
+
+.qiaomu-radio__ipod-screen-bar strong {
+  overflow: hidden;
+  font-size: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qiaomu-radio__ipod-screen-bar button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #425039;
+}
+
+.qiaomu-radio__ipod-screen-bar button:disabled { opacity: .3; }
+.qiaomu-radio__ipod-screen-bar svg { width: 18px; height: 18px; }
+
+.qiaomu-radio__ipod-content {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(55 68 45 / 45%) transparent;
+}
+
+.qiaomu-radio__ipod-menu-row,
+.qiaomu-radio__ipod-options button,
+.qiaomu-radio__ipod-station {
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 15px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #3e4a36;
+  text-align: start;
+}
+
+.qiaomu-radio__ipod-menu-row.is-primary,
+.qiaomu-radio__ipod-menu-row:focus-visible,
+.qiaomu-radio__ipod-options button[aria-pressed="true"],
+.qiaomu-radio__ipod-station.is-current {
+  background: #45543b;
+  color: #dce7c5;
+}
+
+.qiaomu-radio__ipod-menu-row svg,
+.qiaomu-radio__ipod-options svg,
+.qiaomu-radio__ipod-station > span:last-child svg { width: 18px; height: 18px; }
+
+.qiaomu-radio__ipod-now {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 24px;
+}
+
+.qiaomu-radio__ipod-now > span {
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .15em;
+}
+
+.qiaomu-radio__ipod-now h2,
+.qiaomu-radio__ipod-now p { margin: 0; }
+.qiaomu-radio__ipod-now h2 { overflow: hidden; font-size: 24px; line-height: 1.08; text-overflow: ellipsis; }
+.qiaomu-radio__ipod-now p { margin-top: 8px; color: rgb(45 58 39 / 68%); font-size: 12px; }
+
+.qiaomu-radio__ipod-now button {
+  display: inline-flex;
+  width: max-content;
+  min-height: 32px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 4px 10px;
+  border: 1px solid rgb(55 68 45 / 28%);
+  border-radius: 9px;
+  background: transparent;
+  box-shadow: none;
+  color: #45543b;
+  font-size: 11px;
+}
+
+.qiaomu-radio__ipod-search {
+  display: grid;
+  min-height: 100%;
+  place-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.qiaomu-radio__ipod-search input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgb(55 68 45 / 34%);
+  border-radius: 8px;
+  background: rgb(244 248 234 / 40%);
+  color: #36432f;
+}
+
+.qiaomu-radio__ipod-search button {
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: #45543b;
+  color: #dce7c5;
+}
+
+.qiaomu-radio__ipod-results { min-height: 100%; }
+
+.qiaomu-radio__ipod-station {
+  min-height: 50px;
+  border-bottom: 1px solid rgb(55 68 45 / 18%);
+}
+
+.qiaomu-radio__ipod-station > span:first-child {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qiaomu-radio__ipod-station strong,
+.qiaomu-radio__ipod-station span span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qiaomu-radio__ipod-station strong { font-size: 12px; }
+.qiaomu-radio__ipod-station span span { color: currentColor; font-size: 10px; opacity: .68; }
+
+.qiaomu-radio__ipod-empty {
+  display: grid;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  place-items: center;
+  padding: 24px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgb(55 68 45 / 72%);
+  font-size: 12px;
+  text-align: center;
+}
+
+.qiaomu-radio__ipod-volume {
+  display: grid;
+  min-height: 44px;
+  grid-template-columns: 17px minmax(0, 1fr) 36px;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 14px;
+  flex: 0 0 auto;
+  border-top: 1px solid rgb(55 68 45 / 24%);
+  color: #4b5942;
+  font-size: 11px;
+}
+
+.qiaomu-radio__ipod-volume svg { width: 14px; height: 14px; }
+.qiaomu-radio__ipod-volume input { width: 100%; accent-color: #45543b; }
+
+.qiaomu-radio__wheel {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 28px auto 0;
+  flex: 0 0 auto;
+  border: 1px solid #d4d6cf;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f0f2ec, #e3e6de);
+  box-shadow: inset 0 0 14px rgb(93 102 86 / 8%);
+}
+
+.qiaomu-radio__wheel button {
+  position: absolute;
+  display: grid;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #969e8c;
+}
+
+.qiaomu-radio__wheel-menu { top: 26px; right: 72px; left: 72px; height: 32px; font-size: 15px; font-weight: 700; }
+.qiaomu-radio__wheel-previous { top: 102px; left: 24px; width: 42px; height: 42px; }
+.qiaomu-radio__wheel-next { top: 102px; right: 24px; width: 42px; height: 42px; }
+.qiaomu-radio__wheel-toggle { right: 104px; bottom: 22px; left: 104px; width: 52px; height: 42px; }
+.qiaomu-radio__wheel .qiaomu-radio__wheel-center {
+  top: 82px;
+  left: 82px;
+  width: 96px;
+  height: 96px;
+  border: 1px solid #cbd0c4;
+  border-radius: 50%;
+  background: #f8f8f4;
+  box-shadow: 0 2px 7px rgb(63 70 57 / 12%);
+}
+
+.qiaomu-radio__wheel button:disabled { opacity: .34; }
+.qiaomu-radio__wheel svg { width: 25px; height: 25px; }
+
+.qiaomu-radio__ipod-signature {
+  margin-top: auto;
+  padding-top: 14px;
+  color: #c0c4b7;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: .35em;
+  text-align: center;
+}
+
+.qiaomu-radio-settings__about {
+  margin-top: 30px;
+  padding: 18px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 12px;
+  background: var(--background-secondary);
+}
+
+.qiaomu-radio-settings__about p { margin-top: 0; color: var(--text-muted); }
+.qiaomu-radio-settings__links { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .qiaomu-radio__modes button:hover,
+  .qiaomu-radio__channels button:hover { background: color-mix(in srgb, var(--text-normal) 5%, transparent); }
+  .qiaomu-radio .qiaomu-radio__transport > button:not(.qiaomu-radio__play):hover:not(:disabled) {
+    background: var(--qr-accent-soft);
+    color: var(--qr-accent);
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+@container (max-width: 760px) {
+  .qiaomu-radio__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow: hidden;
+    gap: 0;
+    padding: 0;
+  }
+  .qiaomu-radio__player { display: flex; gap: 18px; padding: 18px 24px 22px; }
+  .qiaomu-radio__listening { display: grid; grid-template-columns: minmax(0, 1fr) auto; max-width: none; padding: 0; gap: 24px; overflow: visible; }
+  .qiaomu-radio__artwork { display: none; }
+  .qiaomu-radio__player-top { grid-column: 1 / -1; }
+  .qiaomu-radio__now { min-height: 0; margin: 0; gap: 6px; }
+  .qiaomu-radio__now h1 { font-size: 24px; -webkit-line-clamp: 2; }
+  .qiaomu-radio__transport { width: 176px; grid-template-columns: 1fr 56px 1fr; align-self: center; margin: 0; padding: 0; gap: 12px; }
+  .qiaomu-radio .qiaomu-radio__transport > .qiaomu-radio__play { width: 56px; height: 56px; }
+  .qiaomu-radio__directory { min-height: 0; padding: 16px 24px 8px; }
+  .qiaomu-radio__channels { margin: 8px 0 12px; }
+}
+
+@container (max-width: 480px) {
+  .qiaomu-radio__shell { padding: 0; }
+  .qiaomu-radio__device { border: 0; border-radius: 0; }
+  .qiaomu-radio__modes button { min-height: 28px; padding-inline: 8px; }
+  .qiaomu-radio__player { grid-template-columns: minmax(0, 1fr); padding: 14px 18px 16px; gap: 12px; }
+  .qiaomu-radio__listening { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .qiaomu-radio__now h1 { font-size: 22px; }
+  .qiaomu-radio__eyebrow, .qiaomu-radio__now p { display: none; }
+  .qiaomu-radio__transport { width: 100%; grid-template-columns: 36px 44px 36px minmax(0, 1fr); justify-content: start; gap: 8px; margin-top: 6px; }
+  .qiaomu-radio .qiaomu-radio__transport > .qiaomu-radio__play { width: 44px; height: 44px; }
+  .qiaomu-radio__volume { grid-column: auto; grid-template-columns: 14px minmax(0, 1fr); margin: 0; }
+  .qiaomu-radio__volume > span:last-child { display: none; }
+  .qiaomu-radio__directory { min-height: 0; padding: 12px; }
+  .qiaomu-radio__search { grid-template-columns: 18px minmax(0, 1fr); }
+  .qiaomu-radio__search button { display: none; }
+  .qiaomu-radio[data-theme="pocket"] .qiaomu-radio__shell { padding: 0; }
+  .qiaomu-radio__station { grid-template-columns: 26px minmax(0, 1fr) 32px; }
+  .qiaomu-radio__station-meta { flex-wrap: wrap; gap: 2px 6px; }
+}
+
+.qiaomu-radio__browse-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  padding: 132px 24px 24px 36%;
+}
+.qiaomu-radio__browse-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(480px, 100%);
+  max-height: 100%;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  padding: 20px;
+  border: 1px solid var(--qr-line);
+  border-radius: 12px;
+  background: var(--background-primary);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 5%), 0 16px 48px rgb(0 0 0 / 12%);
+}
+.qiaomu-radio__browse-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.qiaomu-radio__browse-head h2 { margin: 0; font-size: 18px; font-weight: 600; }
+.qiaomu-radio__browse-head button { width: 44px; min-height: 44px; padding: 12px; }
+.qiaomu-radio__browse-head svg { width: 18px; height: 18px; }
+.qiaomu-radio__browse-panel h3 { margin: 16px 0 6px; color: var(--text-muted); font-size: 12px; font-weight: 500; }
+.qiaomu-radio__browse-choices { display: flex; flex-wrap: wrap; gap: 4px; }
+.qiaomu-radio__browse-choices button { min-height: 40px; padding: 8px 12px; border-radius: 8px; color: var(--text-normal); }
+.qiaomu-radio .qiaomu-radio__browse-choices button[aria-pressed="true"] { color: var(--qr-accent); background: var(--qr-accent-soft); font-weight: 600; }
+.qiaomu-radio .qiaomu-radio__browse-choices button:hover { background: var(--qr-panel); }
+.qiaomu-radio .qiaomu-radio__browse-choices button[aria-pressed="true"]:hover { background: var(--qr-accent-soft); }
+.qiaomu-radio__browse-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-bottom: 16px; }
+.qiaomu-radio__browse-head { flex-shrink: 0; }
+.qiaomu-radio__browse-advanced { margin-top: 20px; }
+.qiaomu-radio__browse-advanced summary { padding: 12px 0; color: var(--text-muted); cursor: pointer; font-size: 13px; }
+.qiaomu-radio__browse-footer { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 1px solid var(--qr-line); }
+.qiaomu-radio[data-theme="classic"] button.qiaomu-radio__browse-reset { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text-normal); padding: 8px 12px; border: 1px solid var(--qr-line); border-radius: 8px; }
+.qiaomu-radio__browse-reset svg { width: 16px; height: 16px; }
+.qiaomu-radio__browse-reset:disabled { opacity: .35; }
+.qiaomu-radio[data-theme="classic"] button.qiaomu-radio__browse-apply,
+.qiaomu-radio[data-theme="classic"] button.qiaomu-radio__browse-apply:hover { min-height: 44px; padding: 10px 18px; background: var(--qr-accent); color: white; border-radius: 8px; }
+.qiaomu-radio__browse-trigger { max-width: 100%; }
+.qiaomu-radio__browse-trigger > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qiaomu-radio[dir="rtl"] .qiaomu-radio__browse-layer { padding: 132px 36% 24px 24px; }
+@container (max-width: 760px) {
+  .qiaomu-radio .qiaomu-radio__browse-layer,
+  .qiaomu-radio[dir="rtl"] .qiaomu-radio__browse-layer { display: flex; align-items: flex-end; padding: 16px; background: rgb(0 0 0 / 12%); }
+  .qiaomu-radio__browse-panel { width: 100%; max-height: 85%; }
+  .qiaomu-radio__browse-choices button { min-height: 44px; }
+}
+
+/* One physical device: fixed proportions, independent of the host's button skin. */
+.qiaomu-radio[data-theme="pocket"] { --qr-accent: #45543b; color-scheme: light; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__shell { padding: 18px; }
+.qiaomu-radio__ipod { width: min(400px, 100%); height: 640px; min-height: 640px; padding: 26px 30px 20px; border-radius: 48px; }
+.qiaomu-radio__ipod-screen { height: 268px; min-height: 268px; margin-top: 16px; border-width: 7px; border-radius: 12px; }
+.qiaomu-radio__ipod-menu-row { min-height: 42px; }
+.qiaomu-radio__wheel { width: 216px; height: 216px; margin-top: 26px; }
+.qiaomu-radio__wheel-menu { top: 15px; left: 62px; right: 62px; }
+.qiaomu-radio__wheel-previous { top: 87px; left: 14px; }
+.qiaomu-radio__wheel-next { top: 87px; right: 14px; }
+.qiaomu-radio__wheel-toggle { left: 82px; right: 82px; bottom: 10px; }
+.qiaomu-radio__wheel .qiaomu-radio__wheel-center { width: 82px; height: 82px; top: 66px; left: 66px; }
+.qiaomu-radio[data-theme="pocket"] button:not(.clickable-icon) { background: transparent; border: 0; border-radius: 0; box-shadow: none; color: #45543b; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__wheel button:not(.clickable-icon) { color: #8d9683; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__wheel button.qiaomu-radio__wheel-center { border: 1px solid #c5cdba; border-radius: 50%; corner-shape: round; background: #f6f7f1; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__ipod-menu-row.is-primary,
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__ipod-menu-row.is-primary:hover,
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__ipod-options button[aria-pressed="true"],
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__ipod-station.is-current {
+  background: #45543b; color: #e1eaca;
+}
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__wheel button:hover { background: transparent; color: #67735c; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__wheel .qiaomu-radio__wheel-center:hover { background: #f0f2e9; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__ipod-screen button:hover:not(.is-primary):not(.is-current):not([aria-pressed="true"]) { background: rgb(69 84 59 / 10%); color: #36432f; }
+.qiaomu-radio__ipod-now h2 { color: #36432f; font-size: 22px; line-height: 1.2; }
+.qiaomu-radio[data-theme="pocket"] .qiaomu-radio__ipod-volume input[type="range"] { appearance: none; height: 24px; padding: 0; background: transparent; box-shadow: none; }
+.qiaomu-radio__ipod-volume input[type="range"]::-webkit-slider-runnable-track { height: 5px; border: 1px solid #889674; border-radius: 4px; background: #b6c49b; box-shadow: none; }
+.qiaomu-radio__ipod-volume input[type="range"]::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; margin-top: -5px; border: 0; border-radius: 50%; background: #45543b; box-shadow: none; }
+.qiaomu-radio__ipod-volume input[type="range"]::-moz-range-track { height: 5px; background: #b6c49b; }
+.qiaomu-radio__ipod-volume input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border: 0; background: #45543b; }
+
+@media (prefers-reduced-motion: reduce) {
+  .qiaomu-radio__transport > button { transition-duration: 0ms; }
+}
